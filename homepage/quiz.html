@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <!-- Bootstrap stuff -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- End Bootstrap stuff -->
+
+    <title>My Webpage - Quiz</title>
+    <script>
+
+        // Run script once DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // When correct answer is clicked, change color to green
+            let correct = document.querySelector('.correct');
+            correct.addEventListener('click', function () {
+
+                // change other options' colors to default if they were red
+                let incs = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incs.length; i++) {
+                    incs[i].style.backgroundColor = "#ffffff";
+                }
+
+                // change color to green
+                correct.style.backgroundColor = 'green';
+                document.querySelector('#feedback1').innerHTML = 'Correct!';
+            });
+
+            // When any incorrect answer is clicked, change color to red
+            let incorrects = document.querySelectorAll('.incorrect');
+            for (let i = 0; i < incorrects.length; i++) {
+                incorrects[i].addEventListener('click', function () {
+                    incorrects[i].style.backgroundColor = 'red';
+                    document.querySelector('#feedback1').innerHTML = 'Incorrect';
+                    // if correct one was already guessed, change its color to default values
+                    let correc = document.querySelector('.correct');
+                    correct.style.backgroundColor = '#ffffff';
+                });
+            }
+
+            // Check free response submission
+            document.querySelector('#check').addEventListener('click', function () {
+                let input = document.querySelector('input');
+                if (input.value.toLowerCase() === 'madrid') {
+                    input.style.backgroundColor = 'green';
+                    document.querySelector('#feedback2').innerHTML = 'Correct!';
+                } else {
+                    input.style.backgroundColor = 'red';
+                    document.querySelector('#feedback2').innerHTML = 'Incorrect';
+                }
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <!-- Bootstrap stuff -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
+    <!-- End Bootstrap stuff -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="education.html">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="skills.html">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="interests.html">Interests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="container">
+        <div class="section">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+
+            <h3>How many legs do ants have?</h3>
+
+            <button class="incorrect btn btn-outline-secondary" type="button">2 legs</button>
+            <button class="incorrect btn btn-outline-secondary">4 legs</button>
+            <button class="correct btn btn-outline-secondary">6 legs</button>
+            <button class="incorrect btn btn-outline-secondary">8 legs</button>
+
+            <p id="feedback1"></p>
+        </div>
+
+        <div class="section">
+
+            <h2>Part 2: Free Response</h2>
+
+            <hr>
+
+            <h3>What is Spain's capital?</h3>
+
+            <input type="text" placeholder="Answer"></input>
+            <button id="check" class="btn btn-outline-secondary">Answer</button>
+
+            <p id="feedback2"></p>
+        </div>
+    </div>
+</body>
+
+</html>

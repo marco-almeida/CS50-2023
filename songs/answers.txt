@@ -1,0 +1,2 @@
+I would use the AVG command on average energy, valence, and danceability and average them out.
+The 3 concepts have different meanings, and so, we can't just average the values expecting a realistic result of the user's aura, as if it was as simple as averaging RBG colors. We should instead average each value alone.

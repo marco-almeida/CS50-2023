@@ -1,0 +1,11 @@
+sort1 uses: Bubble
+
+How do you know?: If the array is already sorted, bubble sort will only do n iterations. The other algorithms will do more than that.
+
+sort2 uses: Merge
+
+How do you know?: Being the only n log n, and the others being n^2, then it should be the the one who takes less time to sort, as long as we use a random array.
+
+sort3 uses: Selection
+
+How do you know?: Takes the most time sorting an already sorted array.
